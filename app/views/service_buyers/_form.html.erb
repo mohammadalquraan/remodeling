@@ -1,0 +1,37 @@
+<%= form_with(model: service_buyer) do |form| %>
+  <% if service_buyer.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(service_buyer.errors.count, "error") %> prohibited this service_buyer from being saved:</h2>
+
+      <ul>
+        <% service_buyer.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :service_id, style: "display: block" %>
+    <%= form.text_field :service_id %>
+  </div>
+
+  <div>
+    <%= form.label :buyer_id, style: "display: block" %>
+    <%= form.text_field :buyer_id %>
+  </div>
+
+  <div>
+    <%= form.label :payout, style: "display: block" %>
+    <%= form.text_field :payout %>
+  </div>
+
+  <div>
+    <%= form.label :active, style: "display: block" %>
+    <%= form.check_box :active %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
