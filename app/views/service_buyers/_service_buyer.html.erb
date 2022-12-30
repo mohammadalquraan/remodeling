@@ -1,12 +1,12 @@
 <div id="<%= dom_id service_buyer %>">
   <p>
     <strong>Service:</strong>
-    <%= service_buyer.service_id %>
+    <%= Service.find(service_buyer.service_id)[:name] %>
   </p>
 
   <p>
     <strong>Buyer:</strong>
-    <%= service_buyer.buyer_id %>
+    <%= Buyer.find(service_buyer.buyer_id)[:name] %>
   </p>
 
   <p>

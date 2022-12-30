@@ -1,24 +1,23 @@
 <%= form_with(model: service_buyer) do |form| %>
-  <% if service_buyer.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(service_buyer.errors.count, "error") %> prohibited this service_buyer from being saved:</h2>
 
-      <ul>
-        <% service_buyer.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render "shared/errors", object:service_buyer %>
 
   <div>
     <%= form.label :service_id, style: "display: block" %>
-    <%= form.text_field :service_id %>
+    <% services = {}%>
+    <% Service.all.each do |service| %>
+      <%  services[service[:name]]=service[:id] %>
+    <% end %>
+    <%= form.select :service_id,options_for_select(services) %>
   </div>
 
   <div>
     <%= form.label :buyer_id, style: "display: block" %>
-    <%= form.text_field :buyer_id %>
+    <% buyers = {}%>
+    <% Buyer.all.each do |buyer| %>
+      <%  buyers[buyer[:name]]=buyer[:id] %>
+    <% end %>
+    <%= form.select :buyer_id, options_for_select(buyers) %>
   </div>
 
   <div>

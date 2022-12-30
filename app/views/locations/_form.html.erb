@@ -1,15 +1,6 @@
 <%= form_with(model: location) do |form| %>
-  <% if location.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(location.errors.count, "error") %> prohibited this location from being saved:</h2>
 
-      <ul>
-        <% location.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render "shared/errors", object:location%>
 
   <div>
     <%= form.label :city, style: "display: block" %>
@@ -22,15 +13,9 @@
   </div>
 
   <div>
-    <%= form.label :state_code, style: "display: block" %>
-    <%= select_tag :state_code %>
-    <%= form.text_field :state_code %>
-  </div>
-
-  <div>
+    <% state_names = STATE_NAMES_AND_CODES.map {|code,name| [name,code]}%>
     <%= form.label :state_name, style: "display: block" %>
-    <%= form.text_field :state_name %>
-  </div>
+    <%= form.select :state_name, options_for_select( state_names, @location[:state_code])%>  </div>
 
   <div>
     <%= form.label :zip_code, style: "display: block" %>

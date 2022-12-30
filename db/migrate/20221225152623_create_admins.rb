@@ -4,7 +4,7 @@ class CreateAdmins < ActiveRecord::Migration[7.0]
       t.string :email, index:true, unique:true
       t.string :password
       t.string :name
-      t.string :admin_type
+      t.integer :admin_type
 
       t.timestamps
     end

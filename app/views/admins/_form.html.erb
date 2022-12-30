@@ -1,18 +1,8 @@
 <%= form_with(model: @admin) do |form| %>
-  <% if @admin.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(@admin.errors.count, "error") %> prohibited this admin from being saved:</h2>
 
-      <ul>
-        <% @admin.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render "shared/errors", object:@admin%>
 
   <div>
-    <%= label_tag :email, 'Email:' %>
     <%= form.label :email, style: "display: block" %>
     <%= form.text_field :email %>
   </div>
@@ -29,7 +19,7 @@
 
   <div>
     <%= form.label :admin_type, style: "display: block" %>
-    <%= form.text_field :admin_type %>
+    <%= form.select :admin_type, Admin.admin_types.to_a %>
   </div>
 
   <div>

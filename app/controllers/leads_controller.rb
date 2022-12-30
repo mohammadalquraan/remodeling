@@ -1,5 +1,5 @@
 class LeadsController < ApplicationController
-  before_action :set_lead, only: %i[ show edit update destroy ]
+  before_action :set_lead, only: %i[ show edit update ]
 
   # GET /leads or /leads.json
   def index
@@ -10,29 +10,10 @@ class LeadsController < ApplicationController
   def show
   end
 
-  # GET /leads/new
-  def new
-    @lead = Lead.new
-  end
-
   # GET /leads/1/edit
   def edit
   end
 
-  # POST /leads or /leads.json
-  def create
-    @lead = Lead.new(lead_params)
-
-    respond_to do |format|
-      if @lead.save
-        format.html { redirect_to lead_url(@lead), notice: "Lead was successfully created." }
-        format.json { render :show, status: :created, location: @lead }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @lead.errors, status: :unprocessable_entity }
-      end
-    end
-  end
 
   # PATCH/PUT /leads/1 or /leads/1.json
   def update
@@ -44,16 +25,6 @@ class LeadsController < ApplicationController
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @lead.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # DELETE /leads/1 or /leads/1.json
-  def destroy
-    @lead.destroy
-
-    respond_to do |format|
-      format.html { redirect_to leads_url, notice: "Lead was successfully destroyed." }
-      format.json { head :no_content }
     end
   end
 

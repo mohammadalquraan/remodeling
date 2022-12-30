@@ -4,4 +4,7 @@ class Buyer < ApplicationRecord
 
   has_many :buyer_locations
   has_many :locations, through: :buyer_locations
+
+  serialize :working_days, Array
+
 end

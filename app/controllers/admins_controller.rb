@@ -41,6 +41,7 @@ class AdminsController < ApplicationController
         format.html { redirect_to admin_url(@admin), notice: "Admin was successfully updated." }
         format.json { render :show, status: :ok, location: @admin }
       else
+        Rails.logger.debug "errors:#{@admin.errors.as_json}"
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @admin.errors, status: :unprocessable_entity }
       end
@@ -65,6 +66,8 @@ class AdminsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def admin_params
-      params.require(:admin).permit(:email, :password, :name, :admin_type)
+      temp_params = params.require(:admin).permit(:email, :password, :name, :admin_type)
+      temp_params[:admin_type] = temp_params[:admin_type].to_i
+      temp_params
     end
 end

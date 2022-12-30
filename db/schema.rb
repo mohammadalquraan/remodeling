@@ -11,19 +11,19 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2022_12_26_074724) do
-  create_table "admins", force: :cascade do |t|
+  create_table "admins", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email"
     t.string "password"
     t.string "name"
-    t.string "admin_type"
+    t.integer "admin_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email"
   end
 
-  create_table "buyer_locations", force: :cascade do |t|
-    t.integer "location_id", null: false
-    t.integer "buyer_id", null: false
+  create_table "buyer_locations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "location_id", null: false
+    t.bigint "buyer_id", null: false
     t.boolean "active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -31,7 +31,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_26_074724) do
     t.index ["location_id"], name: "index_buyer_locations_on_location_id"
   end
 
-  create_table "buyers", force: :cascade do |t|
+  create_table "buyers", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.string "phone_number"
@@ -41,7 +41,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_26_074724) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "leads", force: :cascade do |t|
+  create_table "leads", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "email"
@@ -51,13 +51,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_26_074724) do
     t.string "street_address"
     t.integer "zip_code"
     t.boolean "sold"
-    t.integer "service_id", null: false
+    t.bigint "service_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["service_id"], name: "index_leads_on_service_id"
   end
 
-  create_table "locations", force: :cascade do |t|
+  create_table "locations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "city"
     t.string "country"
     t.string "state_code", limit: 10
@@ -68,9 +68,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_26_074724) do
     t.index ["zip_code"], name: "index_locations_on_zip_code"
   end
 
-  create_table "service_buyers", force: :cascade do |t|
-    t.integer "service_id", null: false
-    t.integer "buyer_id", null: false
+  create_table "service_buyers", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "service_id", null: false
+    t.bigint "buyer_id", null: false
     t.float "payout"
     t.boolean "active"
     t.datetime "created_at", null: false
@@ -79,7 +79,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_26_074724) do
     t.index ["service_id"], name: "index_service_buyers_on_service_id"
   end
 
-  create_table "services", force: :cascade do |t|
+  create_table "services", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.boolean "active"
     t.datetime "created_at", null: false

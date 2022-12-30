@@ -1,6 +1,8 @@
 class LocationsController < ApplicationController
   before_action :set_location, only: %i[ show edit update destroy ]
 
+
+
   # GET /locations or /locations.json
   def index
     @locations = Location.all
@@ -65,6 +67,10 @@ class LocationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def location_params
-      params.require(:location).permit(:city, :country, :state_code, :state_name, :zip_code)
+      temp_params = params.require(:location).permit(:city, :country, :state_name, :zip_code)
+      temp_params[:state_code] = temp_params[:state_name]
+      temp_params[:state_name] = STATE_NAMES_AND_CODES[temp_params[:state_code].to_sym]
+      temp_params
     end
+
 end

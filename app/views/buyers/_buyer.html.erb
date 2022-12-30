@@ -16,7 +16,12 @@
 
   <p>
     <strong>Working days:</strong>
-    <%= buyer.working_days %>
+    <% day_names = WEEK_DAYS.to_a.map {|day| [day.last,day.first]}.to_h %>
+    <%buyer.working_days.drop(1).each do |day| %>
+      <ul>
+        <li> <%= day_names[day] %></li>
+      </ul>
+    <% end %>
   </p>
 
   <p>

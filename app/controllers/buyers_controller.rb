@@ -1,6 +1,7 @@
 class BuyersController < ApplicationController
   before_action :set_buyer, only: %i[ show edit update destroy ]
 
+
   # GET /buyers or /buyers.json
   def index
     @buyers = Buyer.all
@@ -37,6 +38,12 @@ class BuyersController < ApplicationController
   # PATCH/PUT /buyers/1 or /buyers/1.json
   def update
     respond_to do |format|
+      puts '========='
+      puts '========='
+      puts buyer_params
+      puts '========='
+      puts '========='
+
       if @buyer.update(buyer_params)
         format.html { redirect_to buyer_url(@buyer), notice: "Buyer was successfully updated." }
         format.json { render :show, status: :ok, location: @buyer }
@@ -65,6 +72,12 @@ class BuyersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def buyer_params
-      params.require(:buyer).permit(:name, :email, :phone_number, :working_days, :active)
+      temp_params=params.require(:buyer).permit(:name, :email, :phone_number, :active, :working_days => [])
+      puts '==========='
+      puts '==========='
+      puts temp_params
+      puts '==========='
+      puts '==========='
+      temp_params
     end
 end

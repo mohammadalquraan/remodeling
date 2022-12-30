@@ -1,12 +1,12 @@
 <div id="<%= dom_id buyer_location %>">
   <p>
     <strong>Location:</strong>
-    <%= buyer_location.location_id %>
+    <%= Location.find(buyer_location.location_id)[:zip_code] %>
   </p>
 
   <p>
     <strong>Buyer:</strong>
-    <%= buyer_location.buyer_id %>
+    <%= Buyer.find(buyer_location.buyer_id)[:name] %>
   </p>
 
   <p>

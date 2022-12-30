@@ -1,15 +1,6 @@
 <%= form_with(model: buyer) do |form| %>
-  <% if buyer.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(buyer.errors.count, "error") %> prohibited this buyer from being saved:</h2>
 
-      <ul>
-        <% buyer.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render "shared/errors", object:buyer %>
 
   <div>
     <%= form.label :name, style: "display: block" %>
@@ -28,7 +19,8 @@
 
   <div>
     <%= form.label :working_days, style: "display: block" %>
-    <%= form.text_field :working_days %>
+    <%= form.select :working_days, options_for_select(WEEK_DAYS.to_a), {}, {:multiple => true } %>
+
   </div>
 
   <div>
