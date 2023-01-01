@@ -3,13 +3,14 @@
 <h1>Admins</h1>
 
 <div id="admins">
-  <table>
+  <table class="table">
     <tr>
       <th>Id</th>
       <th>Email</th>
       <th>Password</th>
       <th>Name</th>
       <th>Admin type</th>
+      <th>Action</th>
     </tr>
 
     <tr>
@@ -19,10 +20,17 @@
         <td><%= admin.password %></td>
         <td><%= admin.name %></td>
         <td><%= admin.admin_type %></td>
+        <td>
+          <%= link_to "Edit", edit_admin_url(admin), class: 'btn btn-warning btn-sm' %>
+          <%= button_to "Delete", admin, method: :delete, class: 'btn btn-danger btn-sm' %>
+        </td>
       <% end %>
     </tr>
 
   </table>
 
 </div>
+
+<%= link_to "New Admin", new_admin_path, class:"btn btn-success" %>
+
 

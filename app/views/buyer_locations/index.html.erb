@@ -1,3 +1,4 @@
+
 <p style="color: green"><%= notice %></p>
 
 <h1>Buyer locations</h1>
@@ -5,12 +6,13 @@
 
 <div id="buyer_locations">
 
-  <table>
+  <table class="table">
     <tr>
       <th>Id</th>
       <th>Location</th>
       <th>Buyer</th>
       <th>Active</th>
+      <th>Action</th>
     </tr>
     <% @buyer_locations.each do |buyer_location| %>
       <tr>
@@ -18,10 +20,14 @@
         <td> <%= Location.find(buyer_location.location_id)[:zip_code] %></td>
         <td> <%= Buyer.find(buyer_location.buyer_id)[:name] %></td>
         <td> <%=  buyer_location.active %> </td>
+        <td>
+          <%= link_to "Edit", edit_buyer_location_url(buyer_location), class: 'btn btn-warning btn-sm' %>
+          <%= button_to "Delete", buyer_location, method: :delete, class: 'btn btn-danger btn-sm' %>
+        </td>
       </tr>
     <% end %>
   </table>
 
 </div>
 
-<%= link_to "New buyer location", new_buyer_location_path %>
+<%= link_to "New buyer location", new_buyer_location_path, class:"btn btn-success" %>

@@ -4,11 +4,12 @@
 
 <div id="services">
 
-  <table>
+  <table class="table">
     <tr>
       <th>Id</th>
       <th>Name</th>
       <th>Active</th>
+      <th>Actions</th>
     </tr>
 
     <% @services.each do |service| %>
@@ -16,10 +17,14 @@
         <td><%= link_to service.id, service %></td>
         <td> <%= service.name %> </td>
         <td> <%= service.active %> </td>
+        <td>
+          <%= link_to "Edit", edit_service_url(service), class: 'btn btn-warning btn-sm' %>
+          <%= button_to "Delete", service, method: :delete, class: 'btn btn-danger btn-sm' %>
+        </td>
       </tr>
     <% end %>
   </table>
 
 </div>
 
-<%= link_to "New service", new_service_path %>
+<%= link_to "New service", new_service_path, class:'btn btn-success' %>

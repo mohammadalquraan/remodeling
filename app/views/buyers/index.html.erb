@@ -2,8 +2,8 @@
 
 <h1>Buyers</h1>
 
-<div id="buyers">
-  <table>
+<div id="buyers" >
+  <table class="table">
     <tr>
       <th>Id</th>
       <th>Name</th>
@@ -11,6 +11,7 @@
       <th>Phone Number</th>
       <th>Working Days</th>
       <th>Active</th>
+      <th>Actions</th>
     </tr>
     <% @buyers.each do |buyer| %>
       <tr>
@@ -26,9 +27,13 @@
           <% end %>
         </td>
         <td> <%= buyer.active %></td>
+        <td>
+          <%= link_to "Edit", edit_buyer_url(buyer), class: 'btn btn-warning btn-sm' %>
+          <%= button_to "Delete", buyer, method: :delete, class: 'btn btn-danger btn-sm' %>
+        </td>
       </tr>
     <% end %>
   </table>
 </div>
 
-<%= link_to "New buyer", new_buyer_path %>
+<%= link_to "New buyer", new_buyer_path, class:'btn btn-success' %>
