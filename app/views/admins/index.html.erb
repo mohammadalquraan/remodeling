@@ -3,12 +3,26 @@
 <h1>Admins</h1>
 
 <div id="admins">
-  <% @admins.each do |admin| %>
-    <%= render admin %>
-    <p>
-      <%= link_to "Show this admin", admin %>
-    </p>
-  <% end %>
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>Email</th>
+      <th>Password</th>
+      <th>Name</th>
+      <th>Admin type</th>
+    </tr>
+
+    <tr>
+      <% @admins.each do |admin| %>
+        <td><%= link_to admin.id, admin %></td>
+        <td><%= admin.email %></td>
+        <td><%= admin.password %></td>
+        <td><%= admin.name %></td>
+        <td><%= admin.admin_type %></td>
+      <% end %>
+    </tr>
+
+  </table>
+
 </div>
 
-<%= link_to "New admin", new_admin_path %>

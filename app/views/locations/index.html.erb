@@ -3,12 +3,26 @@
 <h1>Locations</h1>
 
 <div id="locations">
-  <% @locations.each do |location| %>
-    <%= render location %>
-    <p>
-      <%= link_to "Show this location", location %>
-    </p>
-  <% end %>
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>City</th>
+      <th>Country</th>
+      <th>State Code</th>
+      <th>State Name</th>
+      <th>Zip Code</th>
+    </tr>
+    <% @locations.each do |location| %>
+      <tr>
+        <td> <%= link_to location.id, location %></td>
+        <td> <%= location.city %></td>
+        <td> <%= location.country %></td>
+        <td> <%= location.state_code %> </td>
+        <td> <%= location.state_name %></td>
+        <td> <%= location.zip_code %></td>
+      </tr>
+    <% end %>
+  </table>
 </div>
 
 <%= link_to "New location", new_location_path %>

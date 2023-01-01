@@ -3,12 +3,32 @@
 <h1>Buyers</h1>
 
 <div id="buyers">
-  <% @buyers.each do |buyer| %>
-    <%= render buyer %>
-    <p>
-      <%= link_to "Show this buyer", buyer %>
-    </p>
-  <% end %>
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone Number</th>
+      <th>Working Days</th>
+      <th>Active</th>
+    </tr>
+    <% @buyers.each do |buyer| %>
+      <tr>
+        <td> <%= link_to buyer.id, buyer %></td>
+        <td> <%= buyer.name %></td>
+        <td> <%= buyer.email %></td>
+        <td> <%=  buyer.phone_number %> </td>
+        <td>  <% day_names = WEEK_DAYS.to_a.map {|day| [day.last,day.first]}.to_h %>
+          <%buyer.working_days.drop(1).each do |day| %>
+            <ul>
+              <li> <%= day_names[day] %></li>
+            </ul>
+          <% end %>
+        </td>
+        <td> <%= buyer.active %></td>
+      </tr>
+    <% end %>
+  </table>
 </div>
 
 <%= link_to "New buyer", new_buyer_path %>

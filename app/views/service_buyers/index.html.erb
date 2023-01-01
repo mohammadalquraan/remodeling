@@ -3,12 +3,25 @@
 <h1>Service buyers</h1>
 
 <div id="service_buyers">
-  <% @service_buyers.each do |service_buyer| %>
-    <%= render service_buyer %>
-    <p>
-      <%= link_to "Show this service buyer", service_buyer %>
-    </p>
-  <% end %>
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>Service</th>
+      <th>Buyer</th>
+      <th>Payout</th>
+      <th>Active</th>
+    </tr>
+
+    <% @service_buyers.each do |service_buyer| %>
+      <tr>
+        <td><%= link_to service_buyer.id, service_buyer %></td>
+        <td><%= Service.find(service_buyer.service_id)[:name] %></td>
+        <td><%= Buyer.find(service_buyer.buyer_id)[:name] %></td>
+        <td> <%= service_buyer.payout %> </td>
+        <td> <%= service_buyer.active %> </td>
+      </tr>
+    <% end %>
+  </table>
 </div>
 
 <%= link_to "New service buyer", new_service_buyer_path %>

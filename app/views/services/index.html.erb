@@ -3,12 +3,23 @@
 <h1>Services</h1>
 
 <div id="services">
-  <% @services.each do |service| %>
-    <%= render service %>
-    <p>
-      <%= link_to "Show this service", service %>
-    </p>
-  <% end %>
+
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Active</th>
+    </tr>
+
+    <% @services.each do |service| %>
+      <tr>
+        <td><%= link_to service.id, service %></td>
+        <td> <%= service.name %> </td>
+        <td> <%= service.active %> </td>
+      </tr>
+    <% end %>
+  </table>
+
 </div>
 
 <%= link_to "New service", new_service_path %>

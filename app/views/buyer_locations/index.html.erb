@@ -2,13 +2,26 @@
 
 <h1>Buyer locations</h1>
 
+
 <div id="buyer_locations">
-  <% @buyer_locations.each do |buyer_location| %>
-    <%= render buyer_location %>
-    <p>
-      <%= link_to "Show this buyer location", buyer_location %>
-    </p>
-  <% end %>
+
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>Location</th>
+      <th>Buyer</th>
+      <th>Active</th>
+    </tr>
+    <% @buyer_locations.each do |buyer_location| %>
+      <tr>
+        <td> <%= link_to buyer_location.id, buyer_location %></td>
+        <td> <%= Location.find(buyer_location.location_id)[:zip_code] %></td>
+        <td> <%= Buyer.find(buyer_location.buyer_id)[:name] %></td>
+        <td> <%=  buyer_location.active %> </td>
+      </tr>
+    <% end %>
+  </table>
+
 </div>
 
 <%= link_to "New buyer location", new_buyer_location_path %>
