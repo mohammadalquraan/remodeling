@@ -1,22 +1,22 @@
-<div id="<%= dom_id admin %>">
-  <p>
-    <strong>Email:</strong>
-    <%= admin.email %>
-  </p>
+<div id="<%= dom_id admin %>" class="m-5">
 
-  <p>
-    <strong>Password:</strong>
-    <%= admin.password %>
-  </p>
-
-  <p>
-    <strong>Name:</strong>
-    <%= admin.name %>
-  </p>
-
-  <p>
-    <strong>Admin Type:</strong>
-    <%= admin.admin_type %>
-  </p>
+  <table class="table">
+    <tr>
+      <td><strong>Email</strong> </td>
+      <td><%= admin.email %></td>
+    </tr>
+    <tr>
+      <td><strong>Password</strong></td>
+      <td><%= admin.password %></td>
+    </tr>
+    <tr>
+      <td><strong>Name</strong></td>
+      <td><%= admin.name %></td>
+    </tr>
+    <tr>
+      <td><strong>Admin Type</strong></td>
+      <td><%= admin.admin_type %></td>
+    </tr>
+  </table>
 
 </div>

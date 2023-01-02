@@ -2,33 +2,39 @@
 
   <%= render "shared/errors", object:buyer %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+  <div class="row">
+    <div class="col-2">
+      <div>
+        <%= form.label :name, style: "display: block" %>
+        <%= form.text_field :name %>
+      </div>
+
+      <div>
+        <%= form.label :email, style: "display: block" %>
+        <%= form.text_field :email %>
+      </div>
+
+      <div>
+        <%= form.label :phone_number, style: "display: block" %>
+        <%= form.text_field :phone_number %>
+      </div>
+    </div>
+    <div class="col-2">
+      <div>
+        <%= form.label :working_days, style: "display: block" %>
+        <%= form.select :working_days, options_for_select(WEEK_DAYS.to_a), {}, {:multiple => true } %>
+
+      </div>
+
+      <div>
+        <%= form.label :active, style: "display: block" %>
+        <%= form.check_box :active %>
+      </div>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.text_field :email %>
-  </div>
 
-  <div>
-    <%= form.label :phone_number, style: "display: block" %>
-    <%= form.text_field :phone_number %>
-  </div>
-
-  <div>
-    <%= form.label :working_days, style: "display: block" %>
-    <%= form.select :working_days, options_for_select(WEEK_DAYS.to_a), {}, {:multiple => true } %>
-
-  </div>
-
-  <div>
-    <%= form.label :active, style: "display: block" %>
-    <%= form.check_box :active %>
-  </div>
-
-  <div>
+  <div class="mt-2">
     <%= form.submit %>
   </div>
 <% end %>

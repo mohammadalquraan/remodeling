@@ -1,22 +1,23 @@
-<div id="<%= dom_id service_buyer %>">
-  <p>
-    <strong>Service:</strong>
-    <%= Service.find(service_buyer.service_id)[:name] %>
-  </p>
+<div id="<%= dom_id service_buyer %>" class="m-5">
 
-  <p>
-    <strong>Buyer:</strong>
-    <%= Buyer.find(service_buyer.buyer_id)[:name] %>
-  </p>
+  <table class="table">
+    <tr>
+      <td> <strong>Service</strong> </td>
+      <td>  <%= Service.find(service_buyer.service_id)[:name] %></td>
+    </tr>
+    <tr>
+      <td> <strong>Buyer</strong> </td>
+      <td> <%= Buyer.find(service_buyer.buyer_id)[:name] %> </td>
+    </tr>
+    <tr>
+      <td> <strong>Payout</strong> </td>
+      <td> <%= service_buyer.payout %> </td>
+    </tr>
+    <tr>
+      <td> <strong>Active</strong> </td>
+      <td><%= service_buyer.active %> </td>
+    </tr>
+  </table>
 
-  <p>
-    <strong>Payout:</strong>
-    <%= service_buyer.payout %>
-  </p>
-
-  <p>
-    <strong>Active:</strong>
-    <%= service_buyer.active %>
-  </p>
 
 </div>

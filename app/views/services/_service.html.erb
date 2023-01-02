@@ -1,12 +1,12 @@
-<div id="<%= dom_id service %>">
-  <p>
-    <strong>Name:</strong>
-    <%= service.name %>
-  </p>
-
-  <p>
-    <strong>Active:</strong>
-    <%= service.active %>
-  </p>
-
+<div id="<%= dom_id service %>" class="m-5">
+  <table class="table">
+    <tr>
+      <td><strong>Name</strong></td>
+      <td><%= service.name %></td>
+    </tr>
+    <tr>
+      <td><strong>Active</strong></td>
+      <td><%= service.active %></td>
+    </tr>
+  </table>
 </div>

@@ -2,35 +2,41 @@
 
   <%= render "shared/errors", object:service_buyer %>
 
-  <div>
-    <%= form.label :service_id, style: "display: block" %>
-    <% services = {}%>
-    <% Service.all.each do |service| %>
-      <%  services[service[:name]]=service[:id] %>
-    <% end %>
-    <%= form.select :service_id,options_for_select(services) %>
+  <div class="row">
+    <div class="col-2">
+      <div>
+        <%= form.label :service_id, style: "display: block" %>
+        <% services = {}%>
+        <% Service.all.each do |service| %>
+          <%  services[service[:name]]=service[:id] %>
+        <% end %>
+        <%= form.select :service_id,options_for_select(services) %>
+      </div>
+
+      <div>
+        <%= form.label :buyer_id, style: "display: block" %>
+        <% buyers = {}%>
+        <% Buyer.all.each do |buyer| %>
+          <%  buyers[buyer[:name]]=buyer[:id] %>
+        <% end %>
+        <%= form.select :buyer_id, options_for_select(buyers) %>
+      </div>
+    </div>
+    <div class="col-2">
+      <div>
+        <%= form.label :payout, style: "display: block" %>
+        <%= form.text_field :payout %>
+      </div>
+
+      <div>
+        <%= form.label :active, style: "display: block" %>
+        <%= form.check_box :active %>
+      </div>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :buyer_id, style: "display: block" %>
-    <% buyers = {}%>
-    <% Buyer.all.each do |buyer| %>
-      <%  buyers[buyer[:name]]=buyer[:id] %>
-    <% end %>
-    <%= form.select :buyer_id, options_for_select(buyers) %>
-  </div>
 
-  <div>
-    <%= form.label :payout, style: "display: block" %>
-    <%= form.text_field :payout %>
-  </div>
-
-  <div>
-    <%= form.label :active, style: "display: block" %>
-    <%= form.check_box :active %>
-  </div>
-
-  <div>
+  <div class="mt-2">
     <%= form.submit %>
   </div>
 <% end %>

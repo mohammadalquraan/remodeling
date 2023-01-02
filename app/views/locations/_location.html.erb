@@ -1,27 +1,26 @@
-<div id="<%= dom_id location %>">
-  <p>
-    <strong>City:</strong>
-    <%= location.city %>
-  </p>
+<div id="<%= dom_id location %>" class="m-5">
 
-  <p>
-    <strong>Country:</strong>
-    <%= location.country %>
-  </p>
-
-  <p>
-    <strong>State code:</strong>
-    <%= location.state_code %>
-  </p>
-
-  <p>
-    <strong>State name:</strong>
-    <%= location.state_name %>
-  </p>
-
-  <p>
-    <strong>Zip code:</strong>
-    <%= location.zip_code %>
-  </p>
+<table class="table">
+ <tr>
+   <td> <strong>City</strong> </td>
+   <td> <%= location.city %> </td>
+ </tr>
+  <tr>
+    <td> <strong>Country</strong> </td>
+    <td> <%= location.country %> </td>
+  </tr>
+  <tr>
+    <td> <strong>State code</strong> </td>
+    <td> <%= location.state_code %> </td>
+  </tr>
+  <tr>
+    <td> <strong>State Name</strong> </td>
+    <td> <%= location.state_name %> </td>
+  </tr>
+  <tr>
+    <td> <strong>Zip Code</strong> </td>
+    <td> <%= location.zip_code %> </td>
+  </tr>
+</table>
 
 </div>

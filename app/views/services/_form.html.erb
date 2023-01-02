@@ -1,6 +1,14 @@
 <%= form_with(model: service) do |form| %>
 
   <%= render "shared/errors", object:service %>
+  <div class="row">
+    <div class="col-2">
+
+    </div>
+    <div class="col-2">
+
+    </div>
+  </div>
 
   <div>
     <%= form.label :name, style: "display: block" %>
@@ -12,7 +20,7 @@
     <%= form.check_box :active %>
   </div>
 
-  <div>
+  <div class="mt-2">
     <%= form.submit %>
   </div>
 <% end %>

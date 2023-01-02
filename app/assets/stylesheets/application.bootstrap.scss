@@ -1,2 +1,4 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
+*= require select2;
+*= require select2-bootstrap;

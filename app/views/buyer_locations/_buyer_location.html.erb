@@ -1,17 +1,18 @@
-<div id="<%= dom_id buyer_location %>">
-  <p>
-    <strong>Location:</strong>
-    <%= Location.find(buyer_location.location_id)[:zip_code] %>
-  </p>
+<div id="<%= dom_id buyer_location %>" class="m-5">
 
-  <p>
-    <strong>Buyer:</strong>
-    <%= Buyer.find(buyer_location.buyer_id)[:name] %>
-  </p>
-
-  <p>
-    <strong>Active:</strong>
-    <%= buyer_location.active %>
-  </p>
+  <table class="table">
+    <tr>
+      <td><strong>Location</strong> </td>
+      <td>   <%= Location.find(buyer_location.location_id)[:zip_code] %></td>
+    </tr>
+    <tr>
+      <td><strong>Buyer</strong></td>
+      <td><%= Buyer.find(buyer_location.buyer_id)[:name] %></td>
+    </tr>
+    <tr>
+      <td><strong>Active</strong></td>
+      <td><%= buyer_location.active %></td>
+    </tr>
+  </table>
 
 </div>

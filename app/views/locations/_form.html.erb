@@ -2,27 +2,33 @@
 
   <%= render "shared/errors", object:location%>
 
-  <div>
-    <%= form.label :city, style: "display: block" %>
-    <%= form.text_field :city %>
+  <div class="row">
+
+   <div class="col-2">
+     <div>
+     <%= form.label :city, style: "display: block" %>
+     <%= form.text_field :city %>
+   </div>
+    <div>
+      <%= form.label :country, style: "display: block" %>
+      <%= form.text_field :country %>
+    </div>
+     <div>
+       <%= form.label :zip_code, style: "display: block" %>
+       <%= form.number_field :zip_code %>
+     </div>
+
+   </div>
+    <div class="col-2">
+      <div>
+        <% state_names = STATE_NAMES_AND_CODES.map {|code,name| [name,code]}%>
+        <%= form.label :state_name, style: "display: block" %>
+        <%= form.select :state_name, options_for_select( state_names, @location[:state_code])%>
+      </div>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :country, style: "display: block" %>
-    <%= form.text_field :country %>
-  </div>
-
-  <div>
-    <% state_names = STATE_NAMES_AND_CODES.map {|code,name| [name,code]}%>
-    <%= form.label :state_name, style: "display: block" %>
-    <%= form.select :state_name, options_for_select( state_names, @location[:state_code])%>  </div>
-
-  <div>
-    <%= form.label :zip_code, style: "display: block" %>
-    <%= form.number_field :zip_code %>
-  </div>
-
-  <div>
+  <div class="mt-2">
     <%= form.submit %>
   </div>
 <% end %>

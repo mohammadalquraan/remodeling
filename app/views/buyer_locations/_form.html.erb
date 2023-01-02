@@ -1,40 +1,36 @@
 <%= form_with(model: @buyer_location) do |form| %>
-  <% if @buyer_location.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(@buyer_location.errors.count, "error") %> prohibited this buyer_location from being saved:</h2>
 
-      <ul>
-        <% buyer_location.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+  <%= render "shared/errors", object:@buyer_location %>
+
+  <div class="row">
+    <div class="col-2">
+      <div>
+        <%= form.label :location_id, style: "display: block" %>
+        <% locations = {}%>
+        <% Location.all.each do |location| %>
+          <%  locations[location[:zip_code]]=location[:id] %>
         <% end %>
-      </ul>
+        <%= form.select :location_id, options_for_select(locations) %>
+      </div>
+
+      <div>
+        <%= form.label :buyer_id, style: "display: block" %>
+        <% buyers = {}%>
+        <% Buyer.all.each do |buyer| %>
+          <%  buyers[buyer[:name]]=buyer[:id] %>
+        <% end %>
+        <%= form.select :buyer_id, options_for_select(buyers) %>
+      </div>
     </div>
-  <% end %>
-
-  <div>
-    <%= form.label :location_id, style: "display: block" %>
-    <% locations = {}%>
-    <% Location.all.each do |location| %>
-      <%  locations[location[:zip_code]]=location[:id] %>
-    <% end %>
-    <%= form.select :location_id, options_for_select(locations) %>
+    <div class="col-2">
+      <div>
+        <%= form.label :active, style: "display: block" %>
+        <%= form.check_box :active %>
+      </div>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :buyer_id, style: "display: block" %>
-    <% buyers = {}%>
-    <% Buyer.all.each do |buyer| %>
-      <%  buyers[buyer[:name]]=buyer[:id] %>
-    <% end %>
-    <%= form.select :buyer_id, options_for_select(buyers) %>
-  </div>
-
-  <div>
-    <%= form.label :active, style: "display: block" %>
-    <%= form.check_box :active %>
-  </div>
-
-  <div>
+  <div class="mt-2">
     <%= form.submit %>
   </div>
 
